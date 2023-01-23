@@ -39,8 +39,10 @@ Use the higher-order function called getYears to do the following:
 2. Receive a callback function as the second parameter that will take getFinals from task 2 as an argument
 3. Return an array called years containing all of the years in the getFinals data set*/
 
-function getYears(/* code here */) {
-    /* code here */
+function getYears(array, callback) {
+    const years = callback(array).map((getYear) => getYear.Year);
+    return years;
+
 }
 
 
@@ -53,8 +55,16 @@ Use the higher-order function getWinners to do the following:
 💡 HINT: Don't worry about ties for now (Please see the README file for info on ties for a stretch goal.)
 4. Returns the names of all winning countries in an array called `winners` */ 
 
-function getWinners(/* code here */) {
-    /* code here */
+function getWinners(array, callback) {
+    const winnerList = callback(array);
+    const winningTeam = [];
+    for (let i = 0; i < winnerList.length; i++){
+        if (winnerList[i]['Home Team Goals'] > winnerList[i]['Away Team Goals']){
+            winningTeam.push(winnerList[i]['Home Team Name']);
+        }else {
+            winningTeam.push(winnerList[i]['Away Team Name']);
+        }
+    } return winningTeam
 }
 
 
